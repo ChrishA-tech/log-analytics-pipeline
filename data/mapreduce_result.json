@@ -1,0 +1,1 @@
+{"keys": 48, "streaming_equals_spark": true, "streaming_equals_sql": true, "streaming_seconds": 30.4, "spark_rdd_seconds": 6.0, "rows": 3976072}

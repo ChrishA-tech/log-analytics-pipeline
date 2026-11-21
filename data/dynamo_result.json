@@ -1,0 +1,1 @@
+{"items": 8640, "load_seconds": 2.1, "items_per_query": 72, "queries": 300, "p50_ms": 144.3, "note": "moto emulation, not an AWS performance figure"}

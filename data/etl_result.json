@@ -1,0 +1,1 @@
+{"events_in": 4007970, "malformed": 11941, "invalid_latency": 11987, "duplicates": 7970, "clean_rows": 3976072, "detected_bad": 31898, "injected_bad": 31898, "etl_seconds": 50.5}

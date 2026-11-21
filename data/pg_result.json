@@ -1,0 +1,53 @@
+{
+ "Q1 error rate per endpoint, 3 days": {
+  "baseline_ms": 212.7,
+  "tuned_ms": 99.5,
+  "speedup_x": 2.1,
+  "tuned_plan_head": [
+   "Finalize GroupAggregate  (cost=12314.49..12317.68 rows=12 width=17)",
+   "  Group Key: requests.endpoint",
+   "  ->  Gather Merge  (cost=12314.49..12317.29 rows=24 width=25)"
+  ]
+ },
+ "Q2 top 10 users in a region, 1 week": {
+  "baseline_ms": 261.5,
+  "tuned_ms": 125.7,
+  "speedup_x": 2.1,
+  "tuned_plan_head": [
+   "Limit  (cost=25412.44..25412.46 rows=10 width=16)",
+   "  ->  Sort  (cost=25412.44..25422.78 rows=4138 width=16)",
+   "        Sort Key: (count(*)) DESC"
+  ]
+ },
+ "Q3 hourly p95 latency of /checkout, 1 week": {
+  "baseline_ms": 193.3,
+  "tuned_ms": 40.5,
+  "speedup_x": 4.8,
+  "tuned_plan_head": [
+   "GroupAggregate  (cost=17294.14..17783.37 rows=14268 width=16)",
+   "  Group Key: (date_trunc('hour'::text, requests.ts))",
+   "  ->  Sort  (cost=17294.14..17385.88 rows=36694 width=16)"
+  ]
+ },
+ "Q4 single request lookup by request_id": {
+  "baseline_ms": 172.8,
+  "tuned_ms": 0.1,
+  "speedup_x": 1451.9,
+  "tuned_plan_head": [
+   "Append  (cost=0.42..253.42 rows=30 width=74)",
+   "  ->  Index Scan using requests_d01_request_id_idx on requests_d01 requests_1  (cost=0.42..8.44 rows=1 width=74)",
+   "        Index Cond: (request_id = 2718281)"
+  ]
+ },
+ "Q5 dashboard: daily volume and 5xx, whole month": {
+  "baseline_ms": 1066.4,
+  "tuned_ms": 0.1,
+  "speedup_x": 10994.1,
+  "tuned_plan_head": [
+   "Sort  (cost=11.49..11.56 rows=30 width=72)",
+   "  Sort Key: day",
+   "  ->  HashAggregate  (cost=10.30..10.75 rows=30 width=72)"
+  ]
+ },
+ "rows": 3976072
+}
